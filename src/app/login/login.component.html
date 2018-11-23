@@ -1,7 +1,7 @@
 <div>
   <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
     <fieldset ngModelGroup="login">
-      <input name="username" type="text" required minlength="3" [(ngModel)]="userName" #usernameRef="ngModel" />
+      <input name="username" class="ng-pristine ng-invalid ng-touched" type="text" required minlength="3" [(ngModel)]="userName" #usernameRef="ngModel" />
       <div *ngIf="usernameRef.errors?.required">this is required.</div>
       <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors.</div>
 
