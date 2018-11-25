@@ -11,14 +11,53 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   desc = '';
 
-  constructor(private service: TodoService) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    this.getTodos();
   }
 
   addTodo() {
-    this.todos = this.service.addTodo(this.desc);
-    this.desc = '';
+    let desc = this.desc.trim();
+    if (!desc) { return; }
+    this.todoService
+      .addTodo(desc)
+      .subscribe(todo => {
+        this.todos.push(todo);
+        this.desc = '';
+      });
   }
 
+  toggleTodo(todo: Todo) {
+    debugger;
+    const i = this.todos.indexOf(todo);    
+    let updatedTodo = Object.assign({}, todo, { completed: !todo.completed });
+    this.todoService
+      .toggleTodo(updatedTodo)
+      .subscribe(t => {
+        this.todos = [
+          ...this.todos.slice(0, i),
+          t,
+          ...this.todos.slice(i + 1)
+        ];
+      });
+  }
+
+  removeTodo(todo: Todo) {
+    const i = this.todos.indexOf(todo);
+    this.todoService
+      .deleteTodoById(todo.id)
+      .subscribe(() => {
+        this.todos = [
+          ...this.todos.slice(0, i),
+          ...this.todos.slice(i + 1)
+        ];
+      });
+  }
+
+  getTodos(): void {
+    this.todoService
+      .getTodos()
+      .subscribe(todos => this.todos = [...todos]);
+  }
 }
