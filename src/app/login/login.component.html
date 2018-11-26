@@ -1,15 +1,14 @@
 <div>
   <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
     <fieldset ngModelGroup="login">
-      <input name="username" class="ng-pristine ng-invalid ng-touched" type="text" required minlength="3" [(ngModel)]="userName" #usernameRef="ngModel" />
+      <input name="username" type="text" required minlength="3" [(ngModel)]="userName" #usernameRef="ngModel" />
       <div *ngIf="usernameRef.errors?.required">this is required.</div>
       <div *ngIf="usernameRef.errors?.minlength">should be at least 3 charactors.</div>
+      <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
 
       <input name="password" type="password" required [(ngModel)]="password" #passwordRef="ngModel" />
-      <div *ngIf="passwordRef.errors?.required">this is required.</div>
-
-      <button (click)="onClick()">Login</button>
-      <button type="submit">Submit</button>
+      <div *ngIf="passwordRef.errors?.required">this is required.</div> 
     </fieldset>
+    <button type="submit">Login</button>
   </form>
 </div>

@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": "f823b191-7799-438d-8d78-fcb1e468fc78",
+      "desc": "blablabla",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "6f53f8e0-c690-ddc0-e06f-7a290548062d",
+      "desc": "what",
+      "completed": true,
+      "userId": 2
+    },
+    {
+      "id": "d0bc2589-d566-68e5-77f9-4939bdba3df2",
+      "desc": "hello heelo",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "74ff0ae6-9100-ff4e-e0e5-7d4e2a307730",
+      "desc": "jkjkj",
+      "completed": true,
+      "userId": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "wang",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "username": "peng",
+      "password": "5678"
+    }
+  ]
+}
